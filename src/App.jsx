@@ -17,7 +17,7 @@ export default function App() {
         );
         setCountries(response.data);
       } catch (error) {
-        console.log("error in fetching countries", error);
+        console.log("Error fetching countries", error);
       }
     };
 
@@ -36,9 +36,10 @@ export default function App() {
         style={styles.input}
       />
 
-      <div style={styles.flexContainer}>
+      {/* Cypress expects this class */}
+      <div className="countryCard" style={styles.flexContainer}>
         {filteredCountries.map((country, index) => (
-          <div key={index} className="countryCard" style={styles.card}>
+          <div key={index} style={styles.card}>
             <img src={country.png} alt={country.common} style={styles.flag} />
             <p>{country.common}</p>
           </div>
