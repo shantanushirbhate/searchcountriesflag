@@ -17,7 +17,7 @@ export default function App() {
         );
         setCountries(response.data);
       } catch (error) {
-        console.log("Error fetching countries", error);
+        console.log("Error fetching countries:", error);
       }
     };
 
@@ -30,13 +30,13 @@ export default function App() {
 
       <input
         type="text"
-        placeholder="Search for countries..."
+        placeholder="Search for countries"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         style={styles.input}
       />
 
-      {/* Cypress expects this class */}
+      {/* Cypress looks for this class */}
       <div className="countryCard" style={styles.flexContainer}>
         {filteredCountries.map((country, index) => (
           <div key={index} style={styles.card}>
@@ -51,18 +51,17 @@ export default function App() {
 
 const styles = {
   container: {
-    maxWidth: "1000px",
-    margin: "40px auto",
     textAlign: "center",
+    marginTop: "40px",
     fontFamily: "Arial",
   },
 
   input: {
     padding: "10px",
     width: "60%",
-    borderRadius: "8px",
+    borderRadius: "6px",
     border: "1px solid #ccc",
-    marginBottom: "30px",
+    marginBottom: "20px",
   },
 
   flexContainer: {
@@ -74,10 +73,9 @@ const styles = {
 
   card: {
     width: "150px",
-    border: "1px solid #eee",
-    borderRadius: "10px",
-    padding: "15px",
-    boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+    border: "1px solid #ddd",
+    borderRadius: "8px",
+    padding: "10px",
     textAlign: "center",
   },
 
