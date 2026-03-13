@@ -17,7 +17,7 @@ export default function App() {
         );
         setCountries(response.data);
       } catch (error) {
-        console.log("error in fetching flag", error);
+        console.log("error in fetching countries", error);
       }
     };
 
@@ -26,21 +26,21 @@ export default function App() {
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}> Search Countries</h1>
+      <h1>Search Countries</h1>
 
       <input
         type="text"
-        value={search}
         placeholder="Search for countries..."
+        value={search}
         onChange={(e) => setSearch(e.target.value)}
         style={styles.input}
       />
 
-      <div style={styles.grid}>
+      <div style={styles.flexContainer}>
         {filteredCountries.map((country, index) => (
-          <div key={index} style={styles.card}>
+          <div key={index} className="countryCard" style={styles.card}>
             <img src={country.png} alt={country.common} style={styles.flag} />
-            <p style={styles.name}>{country.common}</p>
+            <p>{country.common}</p>
           </div>
         ))}
       </div>
@@ -56,41 +56,33 @@ const styles = {
     fontFamily: "Arial",
   },
 
-  title: {
-    marginBottom: "20px",
-  },
-
   input: {
     padding: "10px",
     width: "60%",
     borderRadius: "8px",
     border: "1px solid #ccc",
     marginBottom: "30px",
-    fontSize: "16px",
   },
 
-  grid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(160px,1fr))",
+  flexContainer: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
     gap: "20px",
   },
 
   card: {
+    width: "150px",
     border: "1px solid #eee",
     borderRadius: "10px",
     padding: "15px",
     boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-    transition: "0.3s",
+    textAlign: "center",
   },
 
   flag: {
     width: "80px",
     height: "50px",
     objectFit: "cover",
-  },
-
-  name: {
-    marginTop: "10px",
-    fontWeight: "bold",
   },
 };
