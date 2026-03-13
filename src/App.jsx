@@ -25,7 +25,7 @@ export default function App() {
   }, []);
 
   return (
-    <div style={styles.container}>
+    <div className="countryCard" style={styles.countryCard}>
       <h1>Search Countries</h1>
 
       <input
@@ -39,7 +39,7 @@ export default function App() {
       {/* Cypress looks for this class */}
       <div className="countryCard" style={styles.flexContainer}>
         {filteredCountries.map((country, index) => (
-          <div key={index} style={styles.card}>
+          <div className="countryCard" key={index} style={styles.card}>
             <img src={country.png} alt={country.common} style={styles.flag} />
             <p>{country.common}</p>
           </div>
@@ -50,7 +50,7 @@ export default function App() {
 }
 
 const styles = {
-  container: {
+  countryCard: {
     textAlign: "center",
     marginTop: "40px",
     fontFamily: "Arial",
