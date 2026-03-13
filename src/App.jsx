@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./App.css";
 
 export default function App() {
   const [countries, setCountries] = useState([]);
@@ -25,7 +26,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="countryCard" style={styles.countryCard}>
+    <div className="container">
       <h1>Search Countries</h1>
 
       <input
@@ -33,14 +34,14 @@ export default function App() {
         placeholder="Search for countries"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        style={styles.input}
+        className="searchInput"
       />
 
-      {/* Cypress looks for this class */}
-      <div className="countryCard" style={styles.flexContainer}>
+      {/* Cypress expects this class */}
+      <div className="countryCard">
         {filteredCountries.map((country, index) => (
-          <div className="countryCard" key={index} style={styles.card}>
-            <img src={country.png} alt={country.common} style={styles.flag} />
+          <div key={index} className="card">
+            <img src={country.png} alt={country.common} />
             <p>{country.common}</p>
           </div>
         ))}
@@ -48,40 +49,3 @@ export default function App() {
     </div>
   );
 }
-
-const styles = {
-  countryCard: {
-    textAlign: "center",
-    marginTop: "40px",
-    fontFamily: "Arial",
-  },
-
-  input: {
-    padding: "10px",
-    width: "60%",
-    borderRadius: "6px",
-    border: "1px solid #ccc",
-    marginBottom: "20px",
-  },
-
-  flexContainer: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    gap: "20px",
-  },
-
-  card: {
-    width: "150px",
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    padding: "10px",
-    textAlign: "center",
-  },
-
-  flag: {
-    width: "80px",
-    height: "50px",
-    objectFit: "cover",
-  },
-};
